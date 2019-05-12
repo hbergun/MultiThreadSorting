@@ -6,26 +6,18 @@ namespace MultiThreadSorting
 {
     public static class RandomUniqValue
     {
-        public static class StaticHesapNo
+        private static List<int> NumberList = new List<int>();
+        private static int value;
+        public static int[] GetRandomUniqueValue(int arraySize)
         {
-            private static List<ulong> NumberList = new List<ulong>();
-            private static ulong value;
-            public static ulong GetRandomUniqueValue()
+            while (NumberList.Count < arraySize)
             {
-                while (NumberList.Count != 99998)
-                {
-                    Random rnd = new Random();
-
-                    value = Convert.ToUInt64(rnd.Next(10000, 99999));
-                    if (!NumberList.Contains(value))
-                    {
-                        NumberList.Add(value);
-                        break;
-                    }
-
-                }
-                return value;
+                Random rnd = new Random();
+                value = rnd.Next(1, 100);
+                if (!NumberList.Contains(value))
+                    NumberList.Add(value);
             }
+            return NumberList.ToArray();
         }
     }
 }

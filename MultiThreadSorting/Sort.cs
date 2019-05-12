@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace MultiThreadSorting
 {
     public class Sort
     {
-        public static void Bubble(int[] myArray)
+        public static int[] Bubble(int[] myArray)
         {
             int i = 1, j, value;
             int arrayCount = myArray.Length;
@@ -25,6 +26,7 @@ namespace MultiThreadSorting
                 }
                 i++;
             }
+            return myArray;
         }
     }
 }
