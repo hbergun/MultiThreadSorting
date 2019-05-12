@@ -9,8 +9,7 @@ namespace MultiThreadSorting
 
         static void Main(string[] args)
         {
-           // int[] myArray = new int[90];
-            int[] myArray,sortedArrayP1,sortedArrayP2,sortedArrayP3;
+            int[] myArray,sortedArrayP1 = null,sortedArrayP2 = null ,sortedArrayP3 = null;
             myArray = RandomUniqValue.GetRandomUniqueValue(90); //Unique Value
 
             Thread thread = new Thread(o => { sortedArrayP1 = Sort.Bubble((int[])o); }); //Thread 1 Part 0-30
@@ -20,12 +19,14 @@ namespace MultiThreadSorting
             thread2.Start(myArray.Skip(30).Take(30).ToArray());
 
             Thread thread3 = new Thread(o => { sortedArrayP3 = Sort.Bubble((int[])o); }); //Thread 3 Part 61-90
-            thread.Start(myArray.Skip(60).Take(30).ToArray());
+            thread3.Start(myArray.Skip(60).Take(30).ToArray());
 
-            thread.Join();
-            thread2.Join();
-            thread3.Join();
-
+            for (int i = 0; i < 30; i++)
+            {
+                Console.Write($"İlkArray {sortedArrayP1[i]}");
+                Console.Write($"--İkinciArray {sortedArrayP2[i]}");
+                Console.WriteLine($"--ÜçüncüArray {sortedArrayP3[i]}");
+            }
             Console.Read();
 
 

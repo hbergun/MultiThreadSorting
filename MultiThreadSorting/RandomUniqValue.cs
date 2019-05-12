@@ -13,7 +13,7 @@ namespace MultiThreadSorting
             while (NumberList.Count < arraySize)
             {
                 Random rnd = new Random();
-                value = rnd.Next(1, 100);
+                value = rnd.Next(1, 91);
                 if (!NumberList.Contains(value))
                     NumberList.Add(value);
             }
